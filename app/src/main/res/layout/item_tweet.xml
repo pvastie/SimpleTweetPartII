@@ -17,19 +17,30 @@
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
+    android:id="@+id/tvName"
+    android:layout_width="202dp"
+    android:layout_height="31dp"
+    android:layout_marginLeft="10dp"
+    android:layout_toEndOf="@id/ivProfileImage"
+    android:textSize="18sp"
+    tools:text="rpandley1234" />
+
+    <TextView
         android:id="@+id/tvScreenName"
-        android:layout_width="202dp"
-        android:layout_height="31dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:layout_marginLeft="10dp"
         android:layout_toEndOf="@id/ivProfileImage"
-        android:textSize="18sp"
-        tools:text="rpandley1234" />
+        android:layout_below="@id/tvName"
+        android:textSize="10dp"
+        tools:text="rpand" />
 
     <TextView
         android:id="@+id/tvTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_toEndOf="@id/tvScreenName"
+        android:layout_marginLeft="15dp"
+        android:layout_toEndOf="@id/tvName"
         android:textSize="10sp"
         tools:text="time" />
 
@@ -37,7 +48,10 @@
         android:id="@+id/tvBody"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@id/tvTime"
+        android:layout_below="@id/tvScreenName"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:textColorLink="@color/colorBlue"
         android:layout_marginLeft="12dp"
         android:layout_toEndOf="@id/ivProfileImage"
         tools:text="This is my tweet!" />

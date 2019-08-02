@@ -5,23 +5,36 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".DetailActivity"
-    android:background="@color/colorBleuTwitter"
     >
+
+    <include
+        android:id="@+id/tb_detail"
+        layout="@layout/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="67dp">
+
+    </include>
+
 
     <ImageView
         android:id="@+id/ivProfileImage2"
         android:layout_width="60dp"
         android:layout_height="60dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:layout_margin="10dp"/>
+        android:layout_below="@id/tb_detail"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvName2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        tools:text="ing Yvenson Jean-Charles"
+        android:layout_below="@id/tb_detail"
+        tools:text="Vastie Paulo"
         android:layout_toEndOf="@id/ivProfileImage2"
-        android:textColor="@color/colorWrite"
+        android:textColor="@color/colorBlack"
         android:layout_marginTop="10dp"
         android:layout_marginEnd="10dp"/>
 
@@ -29,81 +42,43 @@
         android:id="@+id/tvScreenName2"
         android:layout_width="wrap_content"
         android:layout_height="20dp"
-        android:text="realrocket"
-        android:layout_toEndOf="@id/tvName2"
+        android:layout_below="@id/tb_detail"
         android:layout_marginTop="10dp"
-        android:textColor="@color/colorWrite"
-        android:layout_toLeftOf="@id/tvTime2"
-        />
+        android:layout_toEndOf="@id/tvName2"
+        android:text="vpaulo"
+        android:textColor="@color/colorBlack" />
 
-    <TextView
-        android:id="@+id/tvTime2"
-        android:textColor="@color/colorWrite"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/tvBody2"
-        android:layout_width="wrap_content"
+        android:layout_width="200dp"
         android:layout_height="wrap_content"
-        android:text="this is my tweet"
         android:layout_below="@id/ivProfileImage2"
+        android:layout_marginStart="10dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginRight="10dp"
+
+        android:layout_marginBottom="10dp"
         android:autoLink="all"
         android:linksClickable="true"
-        android:textColor="@color/colorWrite"
-        android:textSize="25dp"
+        android:text="this is my tweet"
+        android:textColor="@color/colorBlack"
+        android:textSize="25dp" />
 
-        android:layout_margin="10dp"/>
-
-    <View
-        android:id="@+id/divider2"
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="?android:attr/listDivider"
-        android:layout_below="@id/tvCreadteAt2"
-        android:layout_marginHorizontal="20dp"
-        />
-
-    <TextView
-        android:id="@+id/tvRetweetedCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="50 retweets"
-        android:layout_below="@id/divider2"
-        android:layout_marginStart="10dp"
-        android:textColor="@color/colorWrite"
-        android:layout_marginTop="10dp"/>
-
-    <TextView
-        android:id="@+id/tvLikesCount"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="300 Likes"
-        android:layout_below="@id/divider2"
-        android:layout_toEndOf="@id/tvRetweetedCount"
-        android:layout_marginStart="30dp"
-        android:textColor="@color/colorWrite"
-        android:layout_marginTop="10dp"/>
 
     <TextView
         android:id="@+id/tvCreadteAt2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="TextView"
-        android:layout_below="@id/ivEmbeddedImage"
+        android:layout_below="@id/tvScreenName2"
+        android:layout_toEndOf="@id/ivProfileImage2"
+        android:layout_marginTop="7dp"
         android:layout_marginStart="10dp"
         android:layout_marginBottom="5dp"
-        android:textColor="@color/colorWrite"/>
+        android:textColor="@color/colorBlack"/>
 
-    <ImageView
-        android:id="@+id/ivEmbeddedImage"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginBottom="10dp"
-        tools:srcCompat="@tools:sample/avatars"
-        android:layout_below="@id/tvBody2"/>
+
 </RelativeLayout>

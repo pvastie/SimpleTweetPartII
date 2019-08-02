@@ -37,6 +37,8 @@ public class TimelineActivity extends AppCompatActivity {
 
 
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate( savedInstanceState );
@@ -51,6 +53,8 @@ public class TimelineActivity extends AppCompatActivity {
         client = TwitterApp.getRestClient( this );
 
         swipeContainer = findViewById( R.id.swipeContainer );
+
+
 
          //Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
@@ -110,6 +114,8 @@ public class TimelineActivity extends AppCompatActivity {
         adapter.notifyItemInserted( 0 );
         }
     }
+
+
 
     private void populatHomeTimeline() {
         client.getHomeTimeline( new JsonHttpResponseHandler( ){

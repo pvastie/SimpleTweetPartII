@@ -1,6 +1,7 @@
 package com.codepath.apps.restclienttemplate;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -12,9 +13,12 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 public class TweetAdapter extends RecyclerView.Adapter<TweetAdapter.ViewHolder>{
+
 
 private Context context;
 private List<Tweet> tweets;
@@ -37,14 +41,38 @@ private List<Tweet> tweets;
     @Override
     public void onBindViewHolder(@NonNull ViewHolder viewHolder, int position) {
 
-        Tweet tweet = tweets.get( position );
+        final Tweet tweet = tweets.get( position );
         viewHolder.tvBody.setText( tweet.body );
-        viewHolder.tvScreenName.setText( tweet.user.screenName );
+        viewHolder.tvScreenName.setText("@" + tweet.user.screenName );
         Glide.with( context ).load( tweet.user.profileImageUrl ).into(viewHolder.ivProfileImage);
         viewHolder.tvTime.setText( tweet.createdAt );
+        viewHolder.name.setText( tweet.user.name );
+
+
+
+        viewHolder.tvBody.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( context, DetailActivity.class );
+                intent.putExtra( "tweet", Parcels.wrap( tweet ) );
+                context.startActivity( intent );
+            }
+        } );
+
+        viewHolder.name.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent( context, DetailActivity.class );
+                intent.putExtra( "tweet", Parcels.wrap( tweet ) );
+                context.startActivity( intent );
+            }
+        } );
 
 
     }
+
+
+
 
     //Define how many items are in a data source
     @Override
@@ -70,6 +98,10 @@ private List<Tweet> tweets;
         public TextView tvScreenName;
         public TextView tvBody;
         public TextView tvTime;
+        public TextView name;
+        public RecyclerView rvTweets;
+
+
 
         public ViewHolder(@NonNull View itemView) {
             super( itemView );
@@ -78,7 +110,11 @@ private List<Tweet> tweets;
             tvScreenName = itemView.findViewById( R.id.tvScreenName );
             tvBody = itemView.findViewById( R.id.tvBody );
             tvTime = itemView.findViewById( R.id.tvTime );
+            name = itemView.findViewById( R.id.tvName );
+            rvTweets = itemView.findViewById( R.id.rvTweets );
         }
     }
+
+
 
 }
