@@ -3,6 +3,7 @@ package com.codepath.apps.restclienttemplate;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
@@ -10,6 +11,7 @@ import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
@@ -32,8 +34,11 @@ public class TimelineActivity extends AppCompatActivity {
     private RecyclerView rvTweets;
     private TweetAdapter adapter;
     private List<Tweet> tweets;
+    private FloatingActionButton fActionButton;
 
     private SwipeRefreshLayout swipeContainer;
+
+
 
 
 
@@ -51,6 +56,17 @@ public class TimelineActivity extends AppCompatActivity {
         client = TwitterApp.getRestClient( this );
 
         swipeContainer = findViewById( R.id.swipeContainer );
+        fActionButton = findViewById( R.id.fActionButton );
+
+        fActionButton.setOnClickListener( new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent( TimelineActivity.this, ComposeActivity.class );
+                startActivity( i );
+            }
+        } );
+
+
 
          //Configure the refreshing colors
         swipeContainer.setColorSchemeResources(android.R.color.holo_blue_bright,
@@ -101,6 +117,8 @@ public class TimelineActivity extends AppCompatActivity {
         return super.onOptionsItemSelected( item );
     }
 
+
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
        if(requestCode == REQUEST_CODE && resultCode == RESULT_OK){
@@ -110,6 +128,9 @@ public class TimelineActivity extends AppCompatActivity {
         adapter.notifyItemInserted( 0 );
         }
     }
+
+
+
 
     private void populatHomeTimeline() {
         client.getHomeTimeline( new JsonHttpResponseHandler( ){
